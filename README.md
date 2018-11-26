@@ -1,37 +1,23 @@
-## Welcome to GitHub Pages
+# fast-neural-style-keras
+ 
+This is based on the following repository https://github.com/misgod/fast-neural-style-keras. I made many changes to make it convertible to TF.js. I only included the files that are important and refactored many functionalities. 
 
-You can use the [editor on GitHub](https://github.com/calvinlcchen/calvinlcchen.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Pre-requisites
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+You need keras 2 with tensorflow backend 
 
-### Markdown
+## Test Prediction 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+`python transform.py -i rose.jpg -s la_muse -b 0.1 -o  out`
 
-```markdown
-Syntax highlighted code block
+This will create the output image and a keras .h5 file 
 
-# Header 1
-## Header 2
-### Header 3
+## Conversion of the models 
 
-- Bulleted
-- List
+`tensorflowjs_converter --input_format keras keras.h5 output/`
 
-1. Numbered
-2. List
+## Load the model to the browser
 
-**Bold** and _Italic_ and `Code` text
+This is done using tensorflow.js check the file fast-style.html. Note that I have and editted version of the source package `tf.min.js`. It containts many custom layers like corpping and upsampling that are yet to be implemented in tf.js. Make sure to use that file. Here is the demo http://advancedintegrals.com/fast-style/fast-style.html
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/calvinlcchen/calvinlcchen.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+![Alt text](screen-shot.png?raw=true "Title")
